@@ -1,11 +1,12 @@
 import controller.UserController;
 import io.restassured.response.Response;
 import dto.AddUserResponse;
-import model.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static testdata.TestData.DEFAULT_USER;
+import static testdata.TestData.INVALID_USER;
 
 public class ApiTest {
 
@@ -13,24 +14,25 @@ public class ApiTest {
 
     @Test
     void createUserControllerTest() {
-        User user = new User(
-                0,
-                "username",
-                "firstName",
-                "lastName",
-                "email",
-                "password",
-                "phone",
-                0);
 
-        Response response = userController.createUser(user);
-        AddUserResponse createdUserResponse = response.as(AddUserResponse.class);
+        Response response = userController.createUser(DEFAULT_USER);
+        AddUserResponse createdUserResponse = response.as(AddUserResponse.class); // map to Java object
 
         assertEquals(200, response.statusCode());
         assertEquals(200, createdUserResponse.code());
         assertEquals("unknown", createdUserResponse.type());
         assertFalse(createdUserResponse.message().isEmpty());
+    }
 
+    @Test
+    void createUserControllerTest2() {
 
+        Response response = userController.createUser(INVALID_USER);
+        AddUserResponse createdUserResponse = response.as(AddUserResponse.class); // map to Java object
+
+        assertEquals(200, response.statusCode());
+        assertEquals(200, createdUserResponse.code());
+        assertEquals("unknown", createdUserResponse.type());
+        assertFalse(createdUserResponse.message().isEmpty());
     }
 }
