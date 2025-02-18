@@ -1,3 +1,4 @@
+src/test/resources/default.properties
 *.*~
 .gradle
 build/
