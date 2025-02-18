@@ -1,4 +1,4 @@
-*/default.properties
+/src/test/resources/default.properties
 *.*~
 .gradle
 build/
@@ -39,3 +39,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+

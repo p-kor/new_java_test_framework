@@ -36,9 +36,14 @@ dependencies {
     // https://mvnrepository.com/artifact/org.assertj/assertj-core
     testImplementation 'org.assertj:assertj-core:3.27.3'
 
+    // https://mvnrepository.com/artifact/org.aeonbits.owner/owner
+    implementation 'org.aeonbits.owner:owner:1.0.12'
+
+
 
 }
 
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
